@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoanSureMitra</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #004d99 0%, #00264d 100%);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    margin-right: 10px;
+    color: #ffcc00;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 5px;
+    width: 200px;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 38, 77, 0.8), rgba(0, 77, 153, 0.8)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80') no-repeat center center/cover;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.btn-primary {
+    background: #ffcc00;
+    color: #00264d;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #ffd633;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.features {
+    padding: 60px 0;
+    background: white;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #00264d;
+}
+
+.feature-card {
+    background: #f5f7fa;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #004d99;
+    margin-bottom: 15px;
+}
+
+/* Application Form */
+.application {
+    padding: 60px 0;
+    background: linear-gradient(to right, #f5f7fa 50%, #e6eef7 50%);
+}
+
+.application-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    margin-bottom: 20px;
+    color: #00264d;
+}
+
+/* Loan Types */
+.loan-types {
+    padding: 60px 0;
+    background: white;
+}
+
+.loan-card {
+    background: #f5f7fa;
+    border-radius: 10px;
+    padding: 25px;
+    transition: all 0.3s;
+    height: 100%;
+    cursor: pointer;
+}
+
+.loan-card:hover {
+    background: #e6eef7;
+    transform: translateY(-5px);
+}
+
+.loan-card h3 {
+    color: #004d99;
+    margin-bottom: 15px;
+}
+
+/* Interest Rates Section */
+.interest-rates {
+    padding: 60px 0;
+    background: #e6eef7;
+}
+
+.rate-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+/* Calculator Section */
+.calculator {
+    padding: 60px 0;
+    background: white;
+}
+
+.calculator-box {
+    background: #f5f7fa;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.calculator-result {
+    background: #004d99;
+    color: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+.slider {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    margin: 15px 0;
+}
+
+/* Documentation Section */
+.documentation {
+    padding: 60px 0;
+    background: #e6eef7;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #004d99;
+    color: white;
+}
+
+/* Footer */
+footer {
+    background: #00264d;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #004080;
+}
+
+/* Modal Styles */
+.modal-header {
+    background: linear-gradient(to right, #004d99, #00264d);
+    color: white;
+}
+
+.modal-icon {
+    font-size: 2rem;
+    color: #ffcc00;
+    margin-right: 15px;
+}
+
+.modal-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-feature i {
+    color: #004d99;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>LoanSureMitra</span>
+                </div>
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Let us help you write the next chapter of your life!</h1>
+            <a href="#apply" class="btn btn-primary">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Features and Benefits</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Minimal Documentation</h3>
+                        <p>Easy application process with minimal paperwork required for quick approval</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Simplified Disbursement</h3>
+                        <p>Turn your dream into reality with our hassle-free loan, faster.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Flexible Tenure</h3>
+                        <p>Flexible repayment options with tenures tailored to your loan type</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Attractive Interest Rates</h3>
+                        <p>Repo rate linked interest rates that are among the best in the industry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application" id="apply">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <h2 class="section-title">Apply for Loan</h2>
+                    <p>Get instant provisional sanction in few steps with our easy online application process</p>
+                    <p><small>*Terms and Conditions apply</small></p>
+                </div>
+                <div class="col-md-7">
+                    <div class="application-form">
+                        <h3 class="form-title">Apply Now to Get Online Sanction</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mobile" class="form-label">Mobile Number</label>
+                                <input type="tel" class="form-control" id="mobile" placeholder="+91 Mobile Number"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pan" class="form-label">PAN Card Number</label>
+                                <input type="text" class="form-control" id="pan" placeholder="Enter PAN number"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">Loan Amount Required</label>
+                                <input type="number" class="form-control" id="amount" placeholder="Enter amount"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pincode" class="form-label">Property PIN Code</label>
+                                <input type="text" class="form-control" id="pincode" placeholder="Enter PIN code"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Apply Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Types Section -->
+    <section class="loan-types">
+        <div class="container">
+            <h2 class="section-title">Loans & Insurance</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="loan-card" data-bs-toggle="modal" data-bs-target="#personalLoanTransferModal">
+                        <h3>Personal Loan & Balance Transfer</h3>
+                        <p>Transfer your personal loan to Bank and enjoy lower EMIs and better benefits.</p>
+                        <div class="text-end text-primary mt-3">
+                            <small>Click for details <i class="fas fa-arrow-right"></i></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="loan-card" data-bs-toggle="modal" data-bs-target="#topUpModal">
+                        <h3>Car Loan Top-Up</h3>
+                        <p>Get additional funds on your existing home loan at attractive interest rates.</p>
+                        <div class="text-end text-primary mt-3">
+                            <small>Click for details <i class="fas fa-arrow-right"></i></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="loan-card" data-bs-toggle="modal" data-bs-target="#lapModal">
+                        <h3>Insurance</h3>
+                        <p>Secure your life, health, and wealth with our comprehensive insurance solutions.</p>
+                        <div class="text-end text-primary mt-3">
+                            <small>Click for details <i class="fas fa-arrow-right"></i></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <h3>Loan Products</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Personal Loans</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Car Loans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> +91 70305 55519</li>
+                        <li><i class="fas fa-envelope"></i> loansuremitra@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Office: Lohgoan, Pune, 411047, Maharashtra, India</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Follow Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="mailto:loansuremitra@gmail.com?subject=Loan%20Enquiry&body=Hello,%20I%20would%20like%20to%20know%20more%20about%20home%20loans."
+                            target="_blank" class="text-white"><i class="fas fa-envelope fa-2x"></i></a>
+                        <a href="https://wa.me/919970151797?text=Hi%2C%20I%20would%20like%20to%20connect%20with%20you%20on%20WhatsApp%20to%20explore%20the%20right%20life%20insurance%20solution%20for%20me." target="_blank" class="text-white"><i
+                                class="fa-brands fa-whatsapp fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LoanSureMitra. All Rights Reserved. | Terms & Conditions Apply</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Balance Transfer Modal -->
+    <div class="modal fade" id="personalLoanTransferModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-exchange-alt modal-icon"></i>
+                        Personal Loan Balance Transfer
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-primary mb-4">Transfer your existing personal loan to Bank & NBFC's and enjoy
+                        benefits</h4>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-percentage"></i>
+                                <div>
+                                    <h5>Lower Interest Rates</h5>
+                                    <p>Save more with our attractive interest rates</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-coins"></i>
+                                <div>
+                                    <h5>Top-up Facility</h5>
+                                    <p>Get extra funds along with your transferred loan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h5>Flexible Repayment</h5>
+                                    <p>Choose repayment tenure as per your needs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <div>
+                                    <h5>Faster Processing</h5>
+                                    <p>Quick transfer with minimal documentation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light p-3 rounded">
+                        <h5>Eligibility Criteria</h5>
+                        <ul>
+                            <li>Existing personal loan from another bank or financial institution</li>
+                            <li>Regular repayment history for at least 12 months</li>
+                            <li>Valid income proof and credit score as per NBFC's & Bank norms</li>
+                            <li>Loan amount and tenure within bank guidelines</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top-Up Modal -->
+    <div class="modal fade" id="topUpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-car modal-icon"></i>
+                        Car Loan Top-Up
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-primary mb-4">Get additional funds on your existing car Loan</h4>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <div>
+                                    <h5>Extra Funds</h5>
+                                    <p>Get funds over and above your car loan amount</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <div>
+                                    <h5>Lower Interest</h5>
+                                    <p>Interest rates lower than personal loans</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light p-3 rounded">
+                        <h5>Use Top-Up Loan For</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Home renovation and improvement</li>
+                                    <li>Child's education or wedding</li>
+                                    <li>Medical emergencies</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Debt consolidation</li>
+                                    <li>Business expansion</li>
+                                    <li>Vacation or travel</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h5>Eligibility</h5>
+                        <p>You can avail a top-up loan if you have repaid your car Loan regularly for at
+                            least 12 months and have a good credit history.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insurance & Services Modal -->
+    <div class="modal fade" id="lapModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-shield-alt modal-icon"></i>
+                        Insurance & Services
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body">
+                    <h4 class="text-primary mb-4">Plan today, protect tomorrow—choose the right insurance for you.</h4>
+
+                    <!-- Insurance Features -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-heartbeat"></i>
+                                <div>
+                                    <h5>Health Insurance</h5>
+                                    <p>Cover medical expenses and safeguard your family’s well-being.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-user-shield"></i>
+                                <div>
+                                    <h5>Life Insurance</h5>
+                                    <p>Secure your loved ones’ future with flexible life cover plans.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-car"></i>
+                                <div>
+                                    <h5>Motor Insurance</h5>
+                                    <p>Protect your car or bike against accidents, theft, and damages.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="modal-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <h5>Bussiness Insurance</h5>
+                                    <p>Protect your business against risks like fire, theft, liability, and unforeseen
+                                        losses.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefits -->
+                    <div class="bg-light p-3 rounded mb-4">
+                        <h5>Why Choose Us?</h5>
+                        <ul class="mb-0">
+                            <li>Affordable premiums with flexible payment options</li>
+                            <li>Wide range of insurance products under one roof</li>
+                            <li>Quick claim settlement process</li>
+                            <li>24x7 customer support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="mailto:insurance@icicibank.com?subject=Insurance%20Enquiry" class="btn btn-primary">
+                        Apply Now
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Modals (Home Improvement, Land Loan, Construction Loan) would follow similar structure -->
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Simple form validation and auto-fetch city from pincode
+        document.addEventListener('DOMContentLoaded', function () {
+            // Form submission
+            const loanForm = document.querySelector('form');
+            loanForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Thank you for applying! Our representative will contact you shortly.');
+                loanForm.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
